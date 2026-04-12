@@ -23,7 +23,6 @@ public class TodoController {
 @GetMapping("/todos")
 public String todos(Model model) {
 model.addAttribute("todos", todoRepository.findAll());
-system.out.println("Todos Completed");
 return "todos";
 }
 
@@ -35,7 +34,6 @@ public String add(@RequestParam String todoItem, @RequestParam
 	todo.setCompleted(status);
 	todoRepository.save(todo);
 	model.addAttribute("todos", todoRepository.findAll());
-	system.out.println("Todo added");
 	return "redirect:/todos";
 }
 
@@ -43,7 +41,6 @@ public String add(@RequestParam String todoItem, @RequestParam
 public String delete(@PathVariable long id, Model model) {
 	todoRepository.deleteById(id);
 	model.addAttribute("todos", todoRepository.findAll());
-	system.out.println("Todo deleted");
 	return "redirect:/todos"; 
 }
 
@@ -58,7 +55,6 @@ public String update(@PathVariable long id, Model model) {
 	}
 	todoRepository.save(todo);
 	model.addAttribute("todos", todoRepository.findAll());
-	system.out.println("Todo updated");
 	return "redirect:/todos";
 }
 }
