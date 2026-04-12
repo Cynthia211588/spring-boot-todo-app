@@ -1,5 +1,7 @@
 package co.sohamds.spring.todo.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,8 @@ import co.sohamds.spring.todo.repository.TodoRepository;
 
 @Controller
 public class TodoController {
+	private static final Logger log = LoggerFactory.getLogger(TodoController.class);
+
 	@Autowired
 	TodoRepository todoRepository;
 	
@@ -23,7 +27,7 @@ public class TodoController {
 @GetMapping("/todos")
 public String todos(Model model) {
 model.addAttribute("todos", todoRepository.findAll());
-System.out.println("Todo Completed");
+log.info("Todo list loaded");
 return "todos";
 }
 
@@ -35,7 +39,7 @@ public String add(@RequestParam String todoItem, @RequestParam
 	todo.setCompleted(status);
 	todoRepository.save(todo);
 	model.addAttribute("todos", todoRepository.findAll());
-	System.out.println("Todo Added");
+	log.info("Todo added: {}", todoItem);
 	return "redirect:/todos";
 }
 
@@ -43,7 +47,7 @@ public String add(@RequestParam String todoItem, @RequestParam
 public String delete(@PathVariable long id, Model model) {
 	todoRepository.deleteById(id);
 	model.addAttribute("todos", todoRepository.findAll());
-	System.out.println("Todo Deleted");
+	log.info("Todo deleted: id={}", id);
 	return "redirect:/todos"; 
 }
 
@@ -58,7 +62,7 @@ public String update(@PathVariable long id, Model model) {
 	}
 	todoRepository.save(todo);
 	model.addAttribute("todos", todoRepository.findAll());
-	System.out.println("Todo Updated");
+	log.info("Todo status updated: id={}", id);
 	return "redirect:/todos";
 }
 }
