@@ -23,10 +23,7 @@ public class TodoController {
 @GetMapping("/todos")
 public String todos(Model model) {
 model.addAttribute("todos", todoRepository.findAll());
-<<<<<<< HEAD
-=======
 System.out.println("Todo Completed");
->>>>>>> feature-added-printline
 return "todos";
 }
 
