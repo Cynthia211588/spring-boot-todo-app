@@ -10,6 +10,9 @@ jobs:
   build:
     name: Build with Maven (tests included)
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: spring-boot-todo-app
 
     steps:
       - name: Checkout source code
@@ -21,6 +24,7 @@ jobs:
           distribution: temurin
           java-version: '17'
           cache: maven
+          cache-dependency-path: spring-boot-todo-app/pom.xml
 
       - name: Build project with Maven (tests not skipped)
         run: mvn -B clean package
