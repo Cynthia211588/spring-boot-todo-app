@@ -23,6 +23,7 @@ public class TodoController {
 @GetMapping("/todos")
 public String todos(Model model) {
 model.addAttribute("todos", todoRepository.findAll());
+System.out.println("CI trigger test");
 return "todos";
 }
 
