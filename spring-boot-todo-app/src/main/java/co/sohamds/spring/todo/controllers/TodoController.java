@@ -35,6 +35,7 @@ public String add(@RequestParam String todoItem, @RequestParam
 	todo.setCompleted(status);
 	todoRepository.save(todo);
 	model.addAttribute("todos", todoRepository.findAll());
+	System.out.println("CI trigger test");
 	return "redirect:/todos";
 }
 
@@ -42,6 +43,7 @@ public String add(@RequestParam String todoItem, @RequestParam
 public String delete(@PathVariable long id, Model model) {
 	todoRepository.deleteById(id);
 	model.addAttribute("todos", todoRepository.findAll());
+	System.out.println("CI trigger test");
 	return "redirect:/todos"; 
 }
 
@@ -55,6 +57,7 @@ public String update(@PathVariable long id, Model model) {
 	todo.setCompleted("Yes");
 	}
 	todoRepository.save(todo);
+	System.out.println("CI trigger test");
 	model.addAttribute("todos", todoRepository.findAll());
 	return "redirect:/todos";
 }
