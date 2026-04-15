@@ -19,10 +19,10 @@ jobs:
           distribution: 'corretto'
 
       - name: Build project
-        run: ./mvnw clean package -DskipTests
+        run: mvn -B clean package -DskipTests
 
       - name: Run tests
-        run: mvn test
+        run: mvn -B test
 
       - name: Login to DockerHub
         run: |
