@@ -19,9 +19,11 @@ jobs:
           distribution: 'corretto'
 
       - name: Build project
+        working-directory: spring-boot-todo-app
         run: mvn -B clean package -DskipTests
 
       - name: Run tests
+        working-directory: spring-boot-todo-app
         run: mvn -B test
 
       - name: Login to DockerHub
