@@ -34,6 +34,7 @@ navigation">
 </nav>
 </section>
 <section id="todocontainer">
+<h5 class="text-center mb-3">Today's Date: <span th:text="${currentDate}"></span></h5>
 <div class="row">
 <div class="col-md-2"></div>
 <div class="col-md-8">
@@ -43,6 +44,7 @@ navigation">
 <th scope="col">Id</th>
 <th scope="col">Todo</th>
 <th scope="col">Status</th>
+<th scope="col">Date</th>
 <th scope="col">Update</th>
 <th scope="col">Delete</th>
 </tr>
@@ -52,6 +54,7 @@ navigation">
 <th scope="row" th:text=${todo.id}></th>
 <td th:text=${todo.todoItem}></td>
 <td th:text=${todo.completed}></td>
+<td th:text=${todo.createdDate}></td>
 <td>
 <form th:action="@{/todoUpdate/{id}(id=${todo.id})}"
 method="POST" enctype="multipart/form-data">

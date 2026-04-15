@@ -1,5 +1,7 @@
 package co.sohamds.spring.todo.domain;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
@@ -21,10 +23,18 @@ public class Todo {
 private long id;
 private String todoItem;
 private String completed;
+private LocalDate createdDate;
 public Todo(String todoItem, String completed) {
 	super();
 	this.todoItem = todoItem;
 	this.completed = completed;
+	this.createdDate = LocalDate.now();
+}
+public Todo(String todoItem, String completed, LocalDate createdDate) {
+	super();
+	this.todoItem = todoItem;
+	this.completed = completed;
+	this.createdDate = createdDate;
 }
 
 

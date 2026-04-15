@@ -1,5 +1,7 @@
 package co.sohamds.spring.todo.controllers;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,24 +18,28 @@ public class TodoController {
 	TodoRepository todoRepository;
 	
 	@GetMapping
-	public String index() {
+	public String index(Model model) {
+	model.addAttribute("currentDate", LocalDate.now());
 	return "index.html";
 }
 
 @GetMapping("/todos")
 public String todos(Model model) {
 model.addAttribute("todos", todoRepository.findAll());
+model.addAttribute("currentDate", LocalDate.now());
 return "todos";
 }
 
 @PostMapping("/todoNew")
 public String add(@RequestParam String todoItem, @RequestParam
 	String status, Model model) {
-	Todo todo = new Todo(todoItem, status);
+	Todo todo = new Todo(todoItem, status, LocalDate.now());
 	todo.setTodoItem(todoItem);
 	todo.setCompleted(status);
+	todo.setCreatedDate(LocalDate.now());
 	todoRepository.save(todo);
 	model.addAttribute("todos", todoRepository.findAll());
+	model.addAttribute("currentDate", LocalDate.now());
 	return "redirect:/todos";
 }
 
@@ -41,6 +47,7 @@ public String add(@RequestParam String todoItem, @RequestParam
 public String delete(@PathVariable long id, Model model) {
 	todoRepository.deleteById(id);
 	model.addAttribute("todos", todoRepository.findAll());
+	model.addAttribute("currentDate", LocalDate.now());
 	return "redirect:/todos"; 
 }
 
@@ -55,6 +62,7 @@ public String update(@PathVariable long id, Model model) {
 	}
 	todoRepository.save(todo);
 	model.addAttribute("todos", todoRepository.findAll());
+	model.addAttribute("currentDate", LocalDate.now());
 	return "redirect:/todos";
 }
 }
