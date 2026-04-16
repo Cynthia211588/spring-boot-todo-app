@@ -23,6 +23,38 @@ public class TodoController {
 	return "index.html";
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @GetMapping("/todos")
 public String todos(Model model) {
 model.addAttribute("todos", todoRepository.findAll());
