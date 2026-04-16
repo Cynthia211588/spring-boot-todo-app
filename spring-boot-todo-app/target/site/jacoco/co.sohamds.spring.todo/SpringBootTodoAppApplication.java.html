@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SpringBootTodoAppApplication.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-todo-app</a> &gt; <a href="index.source.html" class="el_package">co.sohamds.spring.todo</a> &gt; <span class="el_source">SpringBootTodoAppApplication.java</span></div><h1>SpringBootTodoAppApplication.java</h1><pre class="source lang-java linenums">package co.sohamds.spring.todo;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import co.sohamds.spring.todo.domain.Todo;
+import co.sohamds.spring.todo.repository.TodoRepository;
+
+@SpringBootApplication
+<span class="fc" id="L14">public class SpringBootTodoAppApplication implements CommandLineRunner</span>
+{
+@Autowired
+public TodoRepository todoRepository;
+public static void main(String[] args) {
+<span class="nc" id="L19">SpringApplication.run(SpringBootTodoAppApplication.class, args);</span>
+<span class="nc" id="L20">}</span>
+
+@Override
+public void run(String... args) throws Exception {
+	
+<span class="fc" id="L25">	Todo test=Todo.builder().id(10).completed(&quot;its completed&quot;).todoItem(&quot;python ML&quot;).build();</span>
+<span class="fc" id="L26">	System.out.println(test.toString());</span>
+<span class="fc" id="L27">	List&lt;Todo&gt; todos = Arrays.asList(new Todo(&quot;Learn Spring&quot; , &quot;Yes&quot;), new Todo(&quot;Learn Driving&quot;, &quot;No&quot;), new Todo(&quot;Go for a Walk&quot;, &quot;No&quot;), new Todo(&quot;Cook Dinner&quot;, &quot;Yes&quot;));</span>
+<span class="fc" id="L28">todos.forEach(todoRepository::save);</span>
+
+<span class="fc" id="L30">}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
