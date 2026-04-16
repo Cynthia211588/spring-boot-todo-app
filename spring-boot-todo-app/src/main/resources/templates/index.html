@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Index Page</title>
+<title>Todo Manager - Home</title>
 <style type="text/css">
 #todocontainer {
 margin-top: 50px;
@@ -31,6 +31,7 @@ aria-label="Toggle navigation">
 <section id="todocontainer">
 <h2 style="padding-top: 30px; padding-bottom: 20px;"
 class="text-center">Welcome to Todo Manager</h2>
+<h5 class="text-center mb-4">Today's Date: <span th:text="${currentDate}"></span></h5>
 <div class="d-flex justify-content-center">
 <form th:action="@{/todos}" method="GET"
 enctype="multipart/form-data">
