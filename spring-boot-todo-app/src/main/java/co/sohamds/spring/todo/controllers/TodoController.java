@@ -26,11 +26,7 @@ public class TodoController {
 @GetMapping("/todos")
 public String todos(Model model) {
 model.addAttribute("todos", todoRepository.findAll());
-<<<<<<< HEAD
 System.out.println("CI trigger test");
-=======
-model.addAttribute("currentDate", LocalDate.now());
->>>>>>> origin/feature/add-date
 return "todos";
 }
 
@@ -42,12 +38,8 @@ public String add(@RequestParam String todoItem, @RequestParam
 	todo.setCompleted(status);
 	todo.setCreatedDate(LocalDate.now());
 	todoRepository.save(todo);
-	model.addAttribute("todos", todoRepository.findAll());
-<<<<<<< HEAD
+	model.addAttribute("todos", todoRepository.findAll()); 
 	System.out.println("CI trigger test");
-=======
-	model.addAttribute("currentDate", LocalDate.now());
->>>>>>> origin/feature/add-date
 	return "redirect:/todos";
 }
 
@@ -55,11 +47,7 @@ public String add(@RequestParam String todoItem, @RequestParam
 public String delete(@PathVariable long id, Model model) {
 	todoRepository.deleteById(id);
 	model.addAttribute("todos", todoRepository.findAll());
-<<<<<<< HEAD
 	System.out.println("CI trigger test");
-=======
-	model.addAttribute("currentDate", LocalDate.now());
->>>>>>> origin/feature/add-date
 	return "redirect:/todos"; 
 }
 
