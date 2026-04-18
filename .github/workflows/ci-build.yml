@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build with Maven
+    name: Build
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -36,7 +36,7 @@ jobs:
           path: spring-boot-todo-app/target/*.jar
 
   test:
-    name: Test with Maven
+    name: Test 
     runs-on: ubuntu-latest
     needs: build
     defaults:
@@ -66,10 +66,10 @@ jobs:
           path: spring-boot-todo-app/target/surefire-reports/*.xml
 
   docker-deploy:
-    name: Build and Deploy Docker Image
+    name: Deploy 
     runs-on: ubuntu-latest
     needs: [build, test]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push'
 
     steps:
       - name: Checkout source code
@@ -97,6 +97,6 @@ jobs:
           file: ./spring-boot-todo-app/Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-todo-app:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-todo-app:${{ replace(github.ref_name, '/', '-') }}
             ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-todo-app:${{ github.sha }}
 
