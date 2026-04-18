@@ -1,5 +1,7 @@
 package co.sohamds.spring.todo.domain;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,10 +16,11 @@ class TodoTest {
 
     @Test
     void testCreateTodoWithAllArgsConstructor() {
-        Todo todo = new Todo(1L, "Study Java", "Yes");
-        assertEquals(1L, todo.getId());
+        LocalDate createdDate = LocalDate.of(2026, 4, 18);
+        Todo todo = new Todo("Study Java", "Yes", createdDate);
         assertEquals("Study Java", todo.getTodoItem());
         assertEquals("Yes", todo.getCompleted());
+        assertEquals(createdDate, todo.getCreatedDate());
     }
 
     @Test
@@ -62,21 +65,22 @@ class TodoTest {
 
     @Test
     void testTodoEquality() {
-        Todo todo1 = new Todo(1L, "Task A", "No");
-        Todo todo2 = new Todo(1L, "Task A", "No");
+        LocalDate createdDate = LocalDate.of(2026, 4, 18);
+        Todo todo1 = new Todo("Task A", "No", createdDate);
+        Todo todo2 = new Todo("Task A", "No", createdDate);
         assertEquals(todo1, todo2);
     }
 
     @Test
     void testTodoNotEqual() {
-        Todo todo1 = new Todo(1L, "Task A", "No");
-        Todo todo2 = new Todo(2L, "Task B", "Yes");
+        Todo todo1 = new Todo("Task A", "No", LocalDate.of(2026, 4, 18));
+        Todo todo2 = new Todo("Task B", "Yes", LocalDate.of(2026, 4, 19));
         assertNotEquals(todo1, todo2);
     }
 
     @Test
     void testTodoToString() {
-        Todo todo = new Todo(1L, "Test task", "No");
+        Todo todo = new Todo("Test task", "No", LocalDate.of(2026, 4, 18));
         String toString = todo.toString();
         assertTrue(toString.contains("Test task"));
         assertTrue(toString.contains("No"));
