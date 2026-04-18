@@ -27,7 +27,7 @@ jobs:
           cache-dependency-path: spring-boot-todo-app/pom.xml
 
       - name: Build artifact
-        run: mvn -B -ntp -DskipTests package
+        run: mvn -B -ntp clean package
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
