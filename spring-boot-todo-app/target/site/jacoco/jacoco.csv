@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+spring-boot-todo-app,co.sohamds.spring.todo.controllers,TodoController,0,114,0,2,0,27,0,7,0,6
+spring-boot-todo-app,co.sohamds.spring.todo.domain,Todo,83,147,21,11,0,18,16,17,1,16
+spring-boot-todo-app,co.sohamds.spring.todo.domain,Todo.TodoBuilder,16,30,0,0,0,1,2,5,2,5
+spring-boot-todo-app,co.sohamds.spring.todo,SpringBootTodoAppApplication,5,61,0,0,2,6,1,2,1,2
+spring-boot-todo-app,co.sohamds.spring.todo.exception,TodoException,3,0,0,0,1,0,1,0,1,0
